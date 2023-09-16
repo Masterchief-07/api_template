@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: dev_dockerfile
+      # dockefile: prog_dockerfile
+    ports:
+      - "3000:80"
