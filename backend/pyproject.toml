@@ -29,9 +29,6 @@ sqlacodegen = "^3.0.0rc3"
 pyjwt = "^2.8.0"
 pydantic = {extras = ["email"], version = "^2.4.2"}
 email-validator = "^2.0.0.post2"
-paydunya = "^1.0.7"
-ruff = "^0.1.6"
-binance-connector = "^3.5.1"
 
 
 [build-system]
