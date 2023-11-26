@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "api"
+name = "backend_template"
 version = "0.1.0"
 description = ""
 authors = ["Masterchief-07 <kjonathan1999@hotmail.com>"]
@@ -7,8 +7,31 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = {extras = ["all"], version = "^0.103.1"}
+fastapi = "^0.100.1"
+uvicorn = "^0.23.2"
+werkzeug = "^2.3.6"
+pytest = "^7.4.0"
+socketio = "^0.2.1"
+redis = "^4.6.0"
+pymysql = "^1.1.0"
+python-jose = "^3.3.0"
+pycryptodome = "^3.18.0"
+requests = "^2.31.0"
+python-multipart = "^0.0.6"
+sqlalchemy-utils = "^0.41.1"
+cryptography = "^41.0.3"
+pydantic-settings = "^2.0.3"
 sqlalchemy = "^2.0.20"
+httpx = "^0.25.0"
+prometheus-fastapi-instrumentator = "^6.1.0"
+python-json-logger = "^2.0.7"
+sqlacodegen = "^3.0.0rc3"
+pyjwt = "^2.8.0"
+pydantic = {extras = ["email"], version = "^2.4.2"}
+email-validator = "^2.0.0.post2"
+paydunya = "^1.0.7"
+ruff = "^0.1.6"
+binance-connector = "^3.5.1"
 
 
 [build-system]
