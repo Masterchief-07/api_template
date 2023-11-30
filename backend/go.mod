@@ -7,7 +7,10 @@ require (
 	gorm.io/gorm v1.25.5
 )
 
-require github.com/go-sql-driver/mysql v1.7.0 // indirect
+require (
+	github.com/go-sql-driver/mysql v1.7.0 // indirect
+	github.com/golang-jwt/jwt/v5 v5.1.0 // indirect
+)
 
 require (
 	github.com/andybalholm/brotli v1.0.6 // indirect
