@@ -1,7 +1,9 @@
 package main
 
 import (
-	"backend_template/services"
+	"backend_template/database"
+	"backend_template/views"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -9,11 +11,14 @@ import (
 func main() {
 	app := fiber.New()
 
-	// app.Get("/", func(c *fiber.Ctx) error {
-	// 	return c.SendString("Hello, World!")
-	// })
-	app.Get("/", services.HelloWorld)
-	app.Get("/:name", services.HelloCustom)
+	//init database
+	// database.InitDatabase()
+	database.InitSqliteDatabase()
+	database.Migrate(database.DB)
 
-	app.Listen(":8000")
+	//add views
+	views.HelloRouter(app)
+	views.ExampleRouter(app)
+
+	log.Panic(app.Listen(":8001"))
 }
