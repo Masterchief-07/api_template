@@ -1,11 +1,14 @@
-#[macro_use] extern crate rocket;
+use salvo::prelude::*;
 
-#[get("/")]
-fn hello() -> &'static str {
-    "Hello, world!"
+#[handler]
+async fn hello() -> &'static str{
+    "hello world"
 }
 
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/", routes![hello])
+#[tokio::main]
+async fn main() {
+    tracing_subscriber::fmt().init();
+    let router = Router::new().get(hello);
+    let acceptor = TcpListener::new("127.0.0.1:8001").bind().await;
+    Server::new(acceptor).serve(router).await;
 }
