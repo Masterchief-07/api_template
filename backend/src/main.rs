@@ -3,11 +3,6 @@ mod views;
 use salvo::prelude::*;
 use views::hello::hello_views;
 
-// #[handler]
-// async fn hello() -> &'static str{
-//     "hello world"
-// }
-
 #[tokio::main]
 async fn main() {
     tracing_subscriber::fmt().init();
