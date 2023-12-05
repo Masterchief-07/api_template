@@ -9,7 +9,7 @@ use crate::views::hello::hello_views;
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-        .service(hello_views())
+        .configure(hello_views)
     })
     .bind(("127.0.0.1", 8001))?
     .run()

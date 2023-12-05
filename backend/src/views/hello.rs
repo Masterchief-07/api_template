@@ -1,8 +1,13 @@
-use actix_web::{web, Scope};
-use crate::services::hello::get_hello_world;
+use actix_web::web;
+use crate::services::hello::{
+    get_hello_world,
+    say_hello,
+    }
+    ;
 
-pub fn hello_views() -> Scope{
-    let hello_router = web::scope("/hello")
-                    .route("/", web::get().to(get_hello_world));
-    hello_router
+pub fn hello_views(cfg: &mut web::ServiceConfig) {
+    cfg.service(web::scope("/hello")
+                    .route("/", web::get().to(get_hello_world))
+                    .route("/{name}", web::get().to(say_hello))
+    );
 }
