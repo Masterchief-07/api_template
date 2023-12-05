@@ -1,6 +1,6 @@
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
-#[derive(Serialize)]
-struct Example{
-    name: String
+#[derive(Serialize, Deserialize)]
+pub struct Example{
+    pub name: String
 }
