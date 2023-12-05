@@ -1,1 +1,1 @@
-mod examples;
+mod example;

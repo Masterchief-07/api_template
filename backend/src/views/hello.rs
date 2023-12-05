@@ -1,7 +1,8 @@
-use salvo::prelude::{Router};
+use actix_web::{web, Scope};
 use crate::services::hello::get_hello_world;
 
-pub fn hello_views() -> Router{
-    let hello_router:Router = Router::with_path("/hello/").get(get_hello_world);
+pub fn hello_views() -> Scope{
+    let hello_router = web::scope("/hello")
+                    .route("/", web::get().to(get_hello_world));
     hello_router
 }
