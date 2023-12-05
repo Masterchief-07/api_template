@@ -7,7 +7,7 @@ use crate::services::hello::{
 
 pub fn hello_views(cfg: &mut web::ServiceConfig) {
     cfg.service(web::scope("/hello")
-                    .route("/", web::get().to(get_hello_world))
-                    .route("/{name}", web::get().to(say_hello))
+                    .service(get_hello_world)
+                    .service(say_hello)
     );
 }
