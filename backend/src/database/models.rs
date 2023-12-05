@@ -1,0 +1,18 @@
+use serde::{Serialize, Deserialize};
+use sea_orm::entity::prelude::*;
+// use chrono::prelude::*;
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, DeriveEntityModel)]
+#[sea_orm(table_name = "examples")]
+pub struct Model{
+    #[sea_orm(primary_key, auto_increment=true)]
+    pub id:i32,
+    pub name:String,
+    // pub created_at: DateTime,
+    // pub updated_at: DateTime
+}
+
+#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
+pub enum Relation{}
+
+impl ActiveModelBehavior for ActiveModel{}
