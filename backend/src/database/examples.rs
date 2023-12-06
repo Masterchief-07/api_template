@@ -1,8 +1,9 @@
 use serde::{Serialize, Deserialize};
 use sea_orm::entity::prelude::*;
+use sea_orm::EntityTrait;
 // use chrono::prelude::*;
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, DeriveEntityModel)]
+#[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Deserialize, Serialize)]
 #[sea_orm(table_name = "examples")]
 pub struct Model{
     #[sea_orm(primary_key, auto_increment=true)]

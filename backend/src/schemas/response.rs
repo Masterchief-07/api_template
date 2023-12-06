@@ -1,40 +1,32 @@
 use actix_web::{
-    body::BoxBody, http::header::ContentType, HttpRequest, HttpResponse, Responder
+    body::BoxBody, http::header::ContentType, HttpRequest, HttpResponse, Responder, http::StatusCode 
 };
 use serde::Serialize;
 use serde_json;
 
 #[derive(Serialize)]
-pub struct Response{
-    pub status: i32,
-    pub message: String,
+pub struct Response<T:Serialize>{
+    status: i32,
+    message: String,
+    data: Option<T>
 }
 
-impl Responder for Response{
+pub fn response(status:i32, message:String) -> Response<()>{
+    Response { status: status, message: message, data: Some(()) }
+}
+
+pub fn response_data<T:Serialize>(status:i32, message:String, data:Option<T>) -> Response<T>{
+    Response { status: status, message: message, data: data }
+}
+
+impl<T:Serialize> Responder for Response<T>{
     type Body = BoxBody;
 
     fn respond_to(self, _req: &HttpRequest) -> HttpResponse<Self::Body>{
         let body = serde_json::to_string(&self).unwrap();
 
         HttpResponse::Ok()
-        .content_type(ContentType::json())
-        .body(body)
-    }
-}
-#[derive(Serialize)]
-pub struct ResponseData<T:Serialize>{
-    pub status: i32,
-    pub message: String,
-    pub data: T
-}
-
-impl<T:Serialize> Responder for ResponseData<T>{
-    type Body = BoxBody;
-
-    fn respond_to(self, _req: &HttpRequest) -> HttpResponse<Self::Body>{
-        let body = serde_json::to_string(&self).unwrap();
-
-        HttpResponse::Ok()
+        .status(StatusCode::from_u16(self.status as u16).unwrap())
         .content_type(ContentType::json())
         .body(body)
     }
