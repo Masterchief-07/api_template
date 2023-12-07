@@ -67,7 +67,7 @@ async fn patch_an_example(id:web::Path<u32>, example_json: web::Json<Example>, d
     match ex{
         Some(e) =>{
             let mut active_e: examples::ActiveModel = e.into();
-            active_e.set_from_json(serde_json::json!(example_json));
+            let _ = active_e.set_from_json(serde_json::json!(example_json));
             let e = active_e.update(conn).await.unwrap();
             response_data(
                 200,
@@ -92,7 +92,7 @@ async fn delete_an_example(id:web::Path<u32>, data: web::Data<DbState>) -> impl 
 
     let conn = &data.conn;
     let res = examples::Entity::delete_by_id(id as i32).exec(conn).await.unwrap();
-    if res.rows_affected != 0 {
+    if res.rows_affected != 1 {
         return response(404, format!("{id} example not found"));
     }
     return response(200, format!("{id} example deleted"));

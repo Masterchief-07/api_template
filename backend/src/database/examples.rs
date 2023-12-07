@@ -7,6 +7,7 @@ use sea_orm::EntityTrait;
 #[sea_orm(table_name = "examples")]
 pub struct Model{
     #[sea_orm(primary_key, auto_increment=true)]
+    #[serde(skip_deserializing)]
     pub id:i32,
     pub name:String,
     // pub created_at: DateTime,

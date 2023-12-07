@@ -26,7 +26,7 @@ async fn main() -> std::io::Result<()> {
         .configure(example_view)
         .default_service(web::to(not_found_default)) //setting default message for unregister path
     })
-    .bind(("127.0.0.1", 8001))?
+    .bind(("0.0.0.0", 80))?
     .run()
     .await
 }
