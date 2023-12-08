@@ -4,17 +4,11 @@ project(BACKEND
         VERSION 0.0.1
         LANGUAGES CXX)
 
-include(dependencies/CPM.cmake)
-CPMAddPackage(
-  NAME asiocmake
-  GIT_REPOSITORY "https://github.com/OlivierLDff/asio.cmake"
-  GIT_TAG "main"
-)
-CPMAddPackage(
-  NAME crow
-  GIT_REPOSITORY "https://github.com/CrowCpp/Crow.git"
-  GIT_TAG "v1.0+5"
-)
+# set("DCMAKE_TOOLCHAIN_FILE", "/home/jonathan/vcpkg/scripts/buildsystems/vcpkg.cmake")
+include("/home/jonathan/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 add_executable(${PROJECT_NAME} main.cpp)
-target_link_libraries(${PROJECT_NAME} Crow::Crow)
+
+find_package(Drogon CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt)
