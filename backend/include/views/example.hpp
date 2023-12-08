@@ -3,6 +3,7 @@
 #include<fmt/core.h>
 #include <drogon/HttpController.h>
 #include <schemas/response.hpp>
+#include <schemas/example.hpp>
 
 using namespace drogon;
 class Examples :public HttpController<Examples>
@@ -22,10 +23,11 @@ class Examples :public HttpController<Examples>
                     std::function<void (const HttpResponsePtr &)> &&callback,
                     int id);
         void postAnExample(const HttpRequestPtr &req,
-                    std::function<void (const HttpResponsePtr &)> &&callback);
+                    std::function<void (const HttpResponsePtr &)> &&callback,
+                    ExampleSchema &&ex);
         void patchAnExample(const HttpRequestPtr &req,
                     std::function<void (const HttpResponsePtr &)> &&callback,
-                    int id);
+                    int id, ExampleSchema &&ex);
         void deleteAnExample(const HttpRequestPtr &req,
                     std::function<void (const HttpResponsePtr &)> &&callback,
                     int id);
@@ -51,21 +53,24 @@ void Examples::getAnExample(const HttpRequestPtr &req,
                 callback(resp);
             }
 void Examples::postAnExample(const HttpRequestPtr &req,
-            std::function<void (const HttpResponsePtr &)> &&callback)
+            std::function<void (const HttpResponsePtr &)> &&callback,
+            ExampleSchema &&ex)
             {
                 auto resp = response(
                     201,
-                    fmt::format("example created")
+                    fmt::format("example created"),
+                    ex.to_json()
                 );
                 callback(resp);
             }
 void Examples::patchAnExample(const HttpRequestPtr &req,
             std::function<void (const HttpResponsePtr &)> &&callback,
-            int id)
+            int id, ExampleSchema &&ex)
             {
                 auto resp = response(
                     200,
-                    fmt::format("example id {} modified", id)
+                    fmt::format("example id {} modified", id),
+                    ex.to_json()
                 );
                 callback(resp);
             }
