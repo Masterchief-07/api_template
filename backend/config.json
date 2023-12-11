@@ -20,7 +20,7 @@
       "rdbms": "mysql",
       "host": "mysql",
       "port": 3306,
-      "dbname": "testing",
+      "dbname": "backend_template",
       "user": "root",
       "passwd": "eFSL91QlWEmlD/h5ZEQQ7oTMJil00npW",
       "is_fast": false,
