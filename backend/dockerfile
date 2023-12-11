@@ -1,2 +1,40 @@
-FROM drogonframework/drogon:latest
+FROM ubuntu:latest
+
+ENV TZ=UTC
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt update -yqq && apt install -yqq build-essential && apt install -yqq --no-install-recommends git gcc g++ cmake curl unzip tar zip libjsoncpp-dev uuid-dev zlib1g-dev openssl libssl-dev postgresql-server-dev-all libmariadb-dev libsqlite3-dev libhiredis-dev pkg-config ninja-build autoconf
+
+# ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
+
+
+#adding certificate to clone data from github
+RUN apt-get install --reinstall ca-certificates
+RUN apt-get install -yqq wget
+RUN mkdir /usr/local/share/ca-certificates/cacert.org
+RUN wget -P /usr/local/share/ca-certificates/cacert.org http://www.cacert.org/certs/root.crt http://www.cacert.org/certs/class3.crt
+RUN update-ca-certificates
+
+WORKDIR /home
+
+#install and config vcpkg
+RUN git clone https://github.com/microsoft/vcpkg.git
+WORKDIR /home/vcpkg
+RUN ./bootstrap-vcpkg.sh
+ENV VCPKG_ROOT=/home/vcpkg
+
+WORKDIR /app
+COPY ./vcpkg.json ./vcpkg-configuration.json ./
+RUN ${VCPKG_ROOT}/vcpkg install
+
+COPY . .
+
+RUN cmake --preset=default
+
+WORKDIR /app/build
+
+RUN ninja
+
+CMD [ "./backend" ]
 

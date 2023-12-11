@@ -1,6 +1,9 @@
 {
   "dependencies": [
     "fmt",
-    "drogon"
+    {
+     "name": "drogon",
+     "features": ["ctl", "sqlite3", "postgres", "orm", "mysql"]
+    }
   ]
 }

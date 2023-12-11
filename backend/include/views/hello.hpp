@@ -7,7 +7,7 @@ class HelloClass:public drogon::HttpController<HelloClass>
 {
     public:
         METHOD_LIST_BEGIN
-        ADD_METHOD_TO(HelloClass::sayHello, "/hello/", Get);
+        ADD_METHOD_TO(HelloClass::sayHello, "/hello", Get);
         ADD_METHOD_TO(HelloClass::sayHelloTo, "/hello/{name}", Get);
         METHOD_LIST_END
 

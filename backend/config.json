@@ -1,0 +1,36 @@
+{
+    "run_as_daemon": false,
+    "relaunch_on_error": false,
+    "threads_num": 16,
+    "max_connections": 100000,
+    "max_connections_per_ip": 0,
+    "idle_connection_timeout":60,
+    "keepalive_requests": 0,
+    "pipelining_requests": 0,
+    "listeners": [
+        {
+        "address": "0.0.0.0",
+        "port": 80,
+        "https": false
+        }
+    ],
+  "db_clients":[
+  {
+      "name":"testing",
+      "rdbms": "mysql",
+      "host": "mysql",
+      "port": 3306,
+      "dbname": "testing",
+      "user": "root",
+      "passwd": "eFSL91QlWEmlD/h5ZEQQ7oTMJil00npW",
+      "is_fast": false,
+      "connection_number": 1
+    }
+  ],
+  "log": {
+      "log_path": "./",
+      "logfile_base_name": "logs",
+      "log_size_limit": 100000000,
+      "log_level": "TRACE"
+    }
+}
