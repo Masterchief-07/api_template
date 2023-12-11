@@ -3,9 +3,10 @@ mod schemas;
 mod services;
 mod views;
 use actix_web::{HttpServer, App, web};
+use std::env;
 use crate::views::hello::hello_views;
 use crate::views::example::example_view;
-use crate::database::connection::{DbState, create_sqlite_connexion, create_database, check_connection};
+use crate::database::connection::{DbState, create_connexion, create_database, check_connection};
 use crate::views::not_found_default;
 
 
@@ -14,7 +15,8 @@ async fn main() -> std::io::Result<()> {
     tracing_subscriber::fmt::init();
 
     //init database
-    let conn = create_sqlite_connexion().await.unwrap();
+    let mysql_path = env::var("DATABASE").unwrap();
+    let conn = create_connexion(mysql_path).await.unwrap();
     check_connection(&conn).await;
     create_database(&conn).await;
     let db_state = DbState{conn};

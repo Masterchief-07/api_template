@@ -6,9 +6,9 @@ pub struct DbState{
     pub conn: DatabaseConnection
 }
 
-pub async fn create_mysql_connexion(url:String) -> DatabaseConnection{
-    let db = Database::connect(url).await.unwrap();
-    db
+pub async fn create_connexion(url:String) -> Result<DatabaseConnection, DbErr>{
+    let db = Database::connect(url).await?;
+    Ok(db)
 }
 
 pub async fn create_sqlite_connexion() -> Result<DatabaseConnection, DbErr>{
