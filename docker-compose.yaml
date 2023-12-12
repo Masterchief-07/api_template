@@ -5,24 +5,26 @@ services:
     build:
       context: ./backend
       dockerfile: dockerfile
-    # volumes:
-    #   - ./backend/:/app/:rw
+    volumes:
+      - ./backend/:/app/:rw
     expose:
       - 80
     networks:
       - net
     depends_on:
       - mysql
+    links:
+      - mysql
     env_file:
       - ./backend/.env
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1g
-        reservations:
-          cpus: '0.25'
-          memory: 512M
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.5'
+    #       memory: 1g
+    #     reservations:
+    #       cpus: '0.25'
+    #       memory: 512M
 
   mysql:
     build:

@@ -16,9 +16,10 @@ async fn main() -> std::io::Result<()> {
 
     //init database
     let mysql_path = env::var("DATABASE").unwrap();
+    print!("{mysql_path}");
     let conn = create_connexion(mysql_path).await.unwrap();
     check_connection(&conn).await;
-    create_database(&conn).await;
+    // create_database(&conn).await;
     let db_state = DbState{conn};
 
     HttpServer::new(move || {
