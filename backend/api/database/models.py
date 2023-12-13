@@ -18,4 +18,4 @@ CustomBoolean = CustomBoolean.with_variant(
 class Example(Base, BaseTemplate):
     __tablename__ = "example"
     id:Mapped[int] = mapped_column(UnsignedInt, init=False,autoincrement=True, nullable=False, primary_key=True)
-    nom:Mapped[str] = mapped_column(VARCHAR(50), init=True, nullable=False)
+    name:Mapped[str] = mapped_column(VARCHAR(50), init=True, nullable=False)

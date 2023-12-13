@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 
 def createAPP() -> FastAPI:
-    from api.config import Setting, SETTINGS
-    from api.views import hello_route, healthcheck_router
-    Setting = SETTINGS()
+    from api.views import hello_route, healthcheck_router, example_router
     app = FastAPI(
         title = "backend_template",
         description = "template for future projects",
@@ -11,6 +9,7 @@ def createAPP() -> FastAPI:
 
     #adding endpoints
     app.include_router(hello_route, prefix="/api/v1/hello")
+    app.include_router(example_router, prefix="/api/v1/example")
     app.include_router(healthcheck_router, prefix="/api/v1/healthcheck")
 
     #adding middlewares
@@ -57,9 +56,7 @@ def createAPP() -> FastAPI:
         )
 
     #init database
-    # from api.database import init_database, engine
-    # init_database(engine)
+    from api.database import init_database, engine
+    init_database(engine)
 
     return app
-
-# app = createAPP()

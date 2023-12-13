@@ -2,8 +2,12 @@ from typing import Type
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource
 
 class SETTINGS(BaseSettings):
-    DATABASE_URL: str|None = None
-    REDIS_DATABASE_URL : str|None = None
+    DATABASE_URL: str
+    REDIS_HOST : str|None = None
+    REDIS_PORT : str|None = None
+    REDIS_PASSWORD : str|None = None
+    JWT_SECRET:str|None = None
+    JWT_ALGORITHM: str|None = None
 
     @classmethod
     def settings_customise_sources(
@@ -20,4 +24,4 @@ TESTING = SETTINGS(
     DATABASE_URL="sqlite:///./test.db",
 )
 
-Setting : SETTINGS|None = None
+Setting : SETTINGS|None = TESTING

@@ -1,7 +1,9 @@
 #custom
 nginx/log/*
 mysql/data/*
-backend/logs/*
+backend/logs/*.log
+backend/logs/*.json
+venv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -13,6 +13,8 @@ services:
       - net
     depends_on:
       - mysql
+    env_file:
+      - ./backend/.env
     deploy:
       resources:
         limits:
