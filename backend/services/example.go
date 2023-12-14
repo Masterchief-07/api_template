@@ -58,7 +58,7 @@ func PostExample(ctx *fiber.Ctx) error {
 		return ctx.Status(fiber.StatusNotAcceptable).JSON(
 			schemas.Response{
 				Status:  fiber.StatusNotAcceptable,
-				Message: "unique constraint",
+				Message: "there is already an example",
 				// Data:    err,
 			},
 		)

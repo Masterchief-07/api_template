@@ -12,13 +12,13 @@ func main() {
 	app := fiber.New()
 
 	//init database
-	// database.InitDatabase()
-	database.InitSqliteDatabase()
-	database.Migrate(database.DB)
+	database.InitMysqlDatabase()
+	// database.InitSqliteDatabase()
+	// database.Migrate(database.DB)
 
 	//add views
 	views.HelloRouter(app)
 	views.ExampleRouter(app)
 
-	log.Panic(app.Listen(":8001"))
+	log.Panic(app.Listen(":80"))
 }

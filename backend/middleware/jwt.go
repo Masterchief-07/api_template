@@ -1,8 +1,8 @@
 package middleware
 
 import (
+	"backend_template/config"
 	"fmt"
-	"os"
 
 	"github.com/golang-jwt/jwt/v5"
 )
@@ -14,7 +14,7 @@ type CustomClaims struct {
 
 func CreateToken(user_id int) (string, error) {
 
-	key := os.Getenv("JWT_KEY")
+	key := config.JWT_KEY
 	t := jwt.NewWithClaims(
 		jwt.SigningMethodHS256,
 		CustomClaims{
@@ -34,7 +34,7 @@ func DecodeToken(token string) (*CustomClaims, error) {
 		if _, ok := tokenobj.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", tokenobj.Header["alg"])
 		}
-		return []byte(os.Getenv("JWT_KEY")), nil
+		return []byte(config.JWT_KEY), nil
 	})
 	if err != nil {
 		return nil, err

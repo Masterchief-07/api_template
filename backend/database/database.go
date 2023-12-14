@@ -1,7 +1,7 @@
 package database
 
 import (
-	"os"
+	"backend_template/config"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
@@ -10,10 +10,9 @@ import (
 
 var DB *gorm.DB
 
-func InitDatabase() {
-	database_url := os.Getenv("DATABASE_URL")
+func InitMysqlDatabase() {
 	var err error
-	DB, err = gorm.Open(mysql.Open(database_url), &gorm.Config{})
+	DB, err = gorm.Open(mysql.Open(config.DATABASE_URL), &gorm.Config{})
 	if err != nil {
 		panic("can't connect to database")
 	}

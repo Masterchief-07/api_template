@@ -9,7 +9,7 @@ require (
 
 require (
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
-	github.com/golang-jwt/jwt/v5 v5.1.0 // indirect
+	github.com/golang-jwt/jwt/v5 v5.1.0
 )
 
 require (
@@ -28,5 +28,5 @@ require (
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/sys v0.15.0 // indirect
 	gorm.io/driver/mysql v1.5.2
-	gorm.io/driver/sqlite v1.5.4 // indirect
+	gorm.io/driver/sqlite v1.5.4
 )
