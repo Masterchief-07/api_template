@@ -63,4 +63,16 @@ docker compose up --build
 
 In the realm of digital sorcery, this incantation sets the wheels in motion, breathing life into your chosen template. As you execute this spell, the mystical energies of Docker converge, orchestrating a symphony of bits and bytes to manifest your creation. Witness the magic unfold seamlessly—no wizardry required, just a dash of command-line charm. 🧙‍♂️💻✨
 
-**Explore, iterate, and innovate! Let's build the future together.**
+## 🚧 Work in Progress Alert 🚧
+
+Attention, intrepid explorer! 🌟
+
+This section is your compass in the realm of perpetual innovation. 🌐 As of now, consider this project a bustling construction site, complete with hard hats and blueprint scrolls. 🏗️ Your journey through these digital landscapes is a unique adventure into the unknown, where features are born and code evolves.
+
+🔍 Kindly tread with the awareness that what you see is but a snapshot of the ongoing symphony of creativity and development. Bugs might be fluttering, and features might be budding. 🐞🌱
+
+Your understanding and patience are the secret ingredients fueling this alchemical process. 🧙‍♂️✨ So, let the excitement guide you, and stay tuned for the grand reveal as this masterpiece takes shape!
+
+Happy exploring! 🚀🔧
+
+`**Explore, iterate, and innovate! Let's build the future together.**`
