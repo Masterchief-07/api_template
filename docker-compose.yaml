@@ -12,7 +12,8 @@ services:
     networks:
       - net
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     deploy:
       resources:
         limits:
@@ -27,14 +28,20 @@ services:
       context: ./mysql
       dockerfile: dockerfile
     restart: always
-    volumes:
-      - ./mysql/data:/var/lib/mysql
+    # volumes:
+    #   - ./mysql/data:/var/lib/mysql
     expose:
       - 3306
     networks:
       - net
     env_file:
       - ./mysql/.env
+    healthcheck:
+      # test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
+      interval: 30s
+      timeout: 60s
+      retries: 10
     deploy:
       resources:
         limits:
@@ -52,7 +59,8 @@ services:
     links:
       - mysql
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - net
     env_file:
