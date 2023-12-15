@@ -6,11 +6,7 @@ pub struct DbState{
     pub conn: DatabaseConnection
 }
 
-<<<<<<< HEAD
-pub async fn create_connexion(url:String) -> Result<DatabaseConnection, DbErr>{
-=======
 pub async fn create_mysql_connexion(url:String) -> Result<DatabaseConnection, DbErr>{
->>>>>>> 340c755 (making it work on docker-compose)
     let db = Database::connect(url).await?;
     Ok(db)
 }
