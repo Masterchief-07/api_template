@@ -16,7 +16,7 @@ services:
       mysql:
         condition: service_healthy
     env_file:
-      - ./backend/.env
+      - ./backend/.env.dev
     deploy:
       resources:
         limits:
@@ -38,7 +38,7 @@ services:
     networks:
       - net
     env_file:
-      - ./mysql/.env
+      - ./mysql/.env.dev
     healthcheck:
       # test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
@@ -67,7 +67,7 @@ services:
     networks:
       - net
     env_file:
-      - ./mysql/.env
+      - ./mysql/.env.dev
     deploy:
       resources:
         limits:
@@ -108,7 +108,7 @@ services:
       dockerfile: dockerfile
     restart: always
     env_file:
-      - ./redis/.env
+      - ./redis/.env.dev
     networks:
       - net
     expose:
