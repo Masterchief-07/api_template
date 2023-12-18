@@ -1,0 +1,11 @@
+FROM python:3.11-buster
+RUN pip install --upgrade pip
+RUN pip install poetry
+
+WORKDIR /app
+COPY pyproject.toml poetry.lock /app/
+RUN poetry install
+
+ADD . /app/
+
+CMD [ "poetry", "run", "python", "run.py" ]

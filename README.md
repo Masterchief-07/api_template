@@ -1,2 +1,2 @@
 # api_template
-api template lib in rustlang
+api template lib in Python
