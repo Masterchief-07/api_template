@@ -142,4 +142,3 @@ void Examples::deleteAnExample(const HttpRequestPtr &req,
                 callback(resp);
                 }
             }
-drogon::orm::Result
