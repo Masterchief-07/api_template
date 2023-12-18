@@ -1,0 +1,4 @@
+mysql/data/*
+nginx/log/*
+backend/example.db
+.env
