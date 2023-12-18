@@ -14,7 +14,7 @@ services:
     depends_on:
       - mysql
     env_file:
-      - ./backend/.env
+      - ./backend/.env.dev
     deploy:
       resources:
         limits:
@@ -36,7 +36,7 @@ services:
     networks:
       - net
     env_file:
-      - ./mysql/.env
+      - ./mysql/.env.dev
     deploy:
       resources:
         limits:
@@ -58,7 +58,7 @@ services:
     networks:
       - net
     env_file:
-      - ./mysql/.env
+      - ./mysql/.env.dev
     deploy:
       resources:
         limits:
@@ -99,7 +99,7 @@ services:
       dockerfile: dockerfile
     restart: always
     env_file:
-      - ./redis/.env
+      - ./redis/.env.dev
     networks:
       - net
     expose:
