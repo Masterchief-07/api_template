@@ -16,7 +16,7 @@
     ],
   "db_clients":[
   {
-      "name":"testing",
+      "name":"default",
       "rdbms": "mysql",
       "host": "mysql",
       "port": 3306,

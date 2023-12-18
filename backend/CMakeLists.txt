@@ -14,7 +14,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_compile_options(${PROJECT_NAME} PUBLIC -Wall -Wfloat-conversion)
 
-file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR}) #configuration for running the programme
 
 find_package(Drogon CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
